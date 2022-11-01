@@ -1,15 +1,18 @@
 from winsound import PlaySound
-from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, DistanceSensor, Motor, MotorPair
+from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, \
+    DistanceSensor, Motor, MotorPair
 from spike.control import wait_for_seconds, wait_until, Timer
 from math import *
+
 hub = PrimeHub()
-legs = MotorPair('E', 'F') 
+legs = MotorPair('E', 'F')
 motorE = Motor('E')
 motorF = Motor('F')
 motorE.set_default_speed(40)
 motorF.set_default_speed(40)
 legs.set_default_speed(40)
 distanceSensor = DistanceSensor('A')
+
 
 def rgb_light():
     while True:
@@ -22,7 +25,6 @@ def rgb_light():
         hub.status_light.on('blue')
         hub.status_light.on('purple')
         hub.status_light.on('pink')
-
 
 
 hub.light_matrix.show_image('HEART')
@@ -39,10 +41,8 @@ if hub.left_button.is_pressed():
         motorF.run_for_degrees(-90)
         motorE.run_for_degrees(-360)
         motorF.run_for_degrees(360)
-        
 
 if hub.right_button.is_pressed():
     motorE.stop()
     motorF.stop()
     hub.light_matrix.show_image('HAPPY')
-    

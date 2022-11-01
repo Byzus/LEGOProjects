@@ -13,7 +13,7 @@ hub.light_matrix.show_image('HEART')
 if hub.left_button.is_pressed():
     legs.start()
     hub.light_matrix.show_image('HAPPY')
-    distanceSensor.wait_for_distance_closed_than(30'cm')
+    distanceSensor.wait_for_distance_closed_than(30, 'cm')
     hub.status_light.on('red')
     legs.stop()
     motorE.run_for_degrees(90)

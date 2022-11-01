@@ -1,8 +1,10 @@
 from ctypes import set_errno
 from os import setegid
-from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, DistanceSensor, Motor, MotorPair
+from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, \
+    DistanceSensor, Motor, MotorPair
 from spike.control import wait_for_seconds, wait_until, Timer
 from math import *
+
 hub = PrimeHub()
 motorPair = MotorPair('A', 'F')
 front_motor = Motor('A')
@@ -11,6 +13,7 @@ steering_motor = Motor('E')
 hub.speaker.beep()
 
 hub.light.matrix.off()
+
 
 def forward_animation():
     # First number = x (from left)
@@ -29,14 +32,13 @@ def forward_animation():
 
 def reset_legs():
     front_motor.run_to_position(270)
-    back_motor.run_to_position(90) 
+    back_motor.run_to_position(90)
     steering_motor.run_to_position(0)
 
 
 distanceSensor = DistanceSensor('B')
 
 while True:
-
     forward_animation()
     steering_motor.set_default_speed(30)
     steering_motor.run_to_position(0)
@@ -53,4 +55,3 @@ while True:
     steering_motor.run_to_position(0)
     reset_legs()
     forward_animation()
-    
