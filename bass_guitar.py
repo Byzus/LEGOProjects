@@ -2,7 +2,7 @@ from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, Motio
 from spike.control import wait_for_seconds, wait_until, Timer
 from math import *
 
-hub = PrimeHub
+hub = PrimeHub()
 hub.status_light.on('white')
 
 forceSensor = ForceSensor('A')
@@ -31,4 +31,4 @@ if forceSensor.is_pressed():
     hub.status_light.on('blue')
     hub.speaker.beep(70, 0.5)
     hub.status_light.on('white')
-    
+
