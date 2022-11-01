@@ -53,3 +53,4 @@ while True:
     steering_motor.run_to_position(0)
     reset_legs()
     forward_animation()
+    
