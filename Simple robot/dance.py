@@ -12,16 +12,16 @@ legs.set_default_speed(40)
 distanceSensor = DistanceSensor('A')
 
 def rgb_light():
-hub.status_light.on('red')
-
-hub.status_light.on('orange')
-hub.status_light.on('yellow')
-hub.status_light.on('green')
-hub.status_light.on('lime')
-hub.status_light.on('cyan')
-hub.status_light.on('blue')
-hub.status_light.on('purple')
-hub.status_light.on('pink')
+    while True:
+        hub.status_light.on('red')
+        hub.status_light.on('orange')
+        hub.status_light.on('yellow')
+        hub.status_light.on('green')
+        hub.status_light.on('lime')
+        hub.status_light.on('cyan')
+        hub.status_light.on('blue')
+        hub.status_light.on('purple')
+        hub.status_light.on('pink')
 
 
 
@@ -45,3 +45,4 @@ if hub.right_button.is_pressed():
     motorE.stop()
     motorF.stop()
     hub.light_matrix.show_image('HAPPY')
+    

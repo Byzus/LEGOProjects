@@ -19,3 +19,4 @@ if hub.left_button.is_pressed():
     motorE.run_for_degrees(90)
     motorF.run_for_degrees(-90)
     legs.start()
+    
