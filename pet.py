@@ -27,16 +27,19 @@ def idle():
     hub.light_matrix.show_image:('HAPPY')
     RLleg.run_to_position(270)
     RRleg.run_to_postion(90)
+    hub.light_status.on('lime')
     tail_animation
 
 
 def sit():
     hub.light_matrix.show_image:('HAPPY')
     legs.run_to_position(0)
+    hub.status_light.on('green')
     tail.stop()
 
 def sleep():
     tail.stop()
+    hub.status_light.on('blue')
     hub.light_matrix.show_image:('ASLEEP')
 
 if hub.left_button.is_pressed():
@@ -48,5 +51,3 @@ if hub.right_button.is_pressed():
 gesture = hub.motion_sensor.wait_for_new_gesture()
 if gesture == 'shaken':
     idle 
-
-
