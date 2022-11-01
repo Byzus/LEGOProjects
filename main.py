@@ -8,4 +8,4 @@ hub = PrimeHub()
 hub.light.off()
 hub.speaker.beep()
 
-motor_pair = MotorPair('B', 'A')
+motorPair = MotorPair('E', 'F')
