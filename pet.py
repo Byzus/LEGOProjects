@@ -42,6 +42,13 @@ def sleep():
     hub.status_light.on('blue')
     hub.light_matrix.show_image:('ASLEEP')
 
+def pee():
+    legs.stop()
+    hub.light_status.on('yellow')
+    RLleg.go_to_postition(270)
+    RRleg.go_to_posiion(0)
+    idle()
+
 if hub.left_button.is_pressed():
     sit
 
