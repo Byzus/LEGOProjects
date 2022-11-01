@@ -31,4 +31,4 @@ if forceSensor.is_pressed():
     hub.status_light.on('blue')
     hub.speaker.beep(70, 0.5)
     hub.status_light.on('white')
-
+    
