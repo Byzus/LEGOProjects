@@ -6,6 +6,10 @@ from spike.control import wait_for_seconds, wait_until, Timer
 from math import *
 
 hub = PrimeHub()
+
+
+hub.left_button.wait_until_pressed():
+
 motorPair = MotorPair('A', 'F')
 front_motor = Motor('A')
 back_motor = Motor('F')
@@ -46,7 +50,7 @@ while True:
     steering_motor.set_default_speed(20)
     motorPair.start()
 
-    distanceSensor.wait_for_distance_closer_than(30, 'cm')
+    distanceSensor.wait_for_distance_closer_than(30, 'cm'):
     hub.light.matris.show.image('GO_LEFT')
     steering_motor.set_default_speed(30)
     steering_motor.run_for_degrees(45)
@@ -55,3 +59,5 @@ while True:
     steering_motor.run_to_position(0)
     reset_legs()
     forward_animation()
+    hub.right_button.wait_until_pressed():
+    stop(0)
