@@ -1,15 +1,9 @@
-from ctypes import set_errno
-from os import setegid
-from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, \
-    DistanceSensor, Motor, MotorPair
-from spike.control import wait_for_seconds, wait_until, Timer
-from math import *
+from spike import PrimeHub, DistanceSensor, Motor, MotorPair
 
 hub = PrimeHub()
 
 
-hub.left_button.wait_until_pressed():
-
+hub.left_button.wait_until_pressed()
 motorPair = MotorPair('A', 'F')
 front_motor = Motor('A')
 back_motor = Motor('F')
@@ -50,8 +44,8 @@ while True:
     steering_motor.set_default_speed(20)
     motorPair.start()
 
-    distanceSensor.wait_for_distance_closer_than(30, 'cm'):
-    hub.light.matris.show.image('GO_LEFT')
+    distanceSensor.wait_for_distance_closer_than(30, 'cm')
+    hub.light_matrix.show.image('GO_LEFT')
     steering_motor.set_default_speed(30)
     steering_motor.run_for_degrees(45)
     motorPair.move(unit='cm', steering=20, speed=40)
@@ -59,5 +53,5 @@ while True:
     steering_motor.run_to_position(0)
     reset_legs()
     forward_animation()
-    hub.right_button.wait_until_pressed():
+    hub.right_button.wait_until_pressed()
     stop(0)
