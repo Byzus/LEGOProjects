@@ -25,12 +25,12 @@ def idle():
     frontLegs.run_to_postion(0)
     rearLegs.run_to_postion(0)
 
-def move(int n):
+def move(n):
     ready()
     frontLegs.start(n)
     rearLegs.start(n)    
 
-def stop()
+def stop():
     frontLegs.stop()
     rearLegs.stop()
 
@@ -45,7 +45,7 @@ while True:
     hub.left_button.wait_until_pressed()
     # move(speed)
     move(50)
-    distanceSensor.wait_for_distance_closed_than(30'cm')
+    distanceSensor.wait_for_distance_closed_than(30, 'cm')
     turnLeft()
 
     hub.right_button.wait_until_pressed()
