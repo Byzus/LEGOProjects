@@ -42,7 +42,7 @@ def sit():
 def sleep():
     tail.stop()
     hub.status_light.on('blue')
-    hub.light_matrix.show_image: ('ASLEEP')
+    hub.light_matrix.show_image: 'ASLEEP'
 
 
 def pee():

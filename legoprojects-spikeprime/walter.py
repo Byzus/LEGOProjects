@@ -5,6 +5,7 @@ from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, Motio
 from spike.control import wait_for_seconds, wait_until, Timer
 from math import *
 
+
 hub = PrimeHub()
 
 
@@ -51,7 +52,8 @@ while True:
     motorPair.start()
 
     distanceSensor.wait_for_distance_closer_than(30, 'cm')
-    hub.light.matris.show.image('GO_LEFT')
+
+    hub.light_matrix.show.image('GO_LEFT')
     steering_motor.set_default_speed(30)
     steering_motor.run_for_degrees(45)
     motorPair.move(unit='cm', steering=20, speed=40)
