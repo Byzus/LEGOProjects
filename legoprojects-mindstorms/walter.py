@@ -35,6 +35,8 @@ def stop():
     rearLegs.stop()
 
 def turnLeft():
+    frontLegs.stop()
+    rearLegs.stop()
     motorA.run_for_seconds(3, 100)
     motorB.run_for_seconds(3, -100)
     motorE.run_for_seconds(3, 100)
