@@ -46,7 +46,7 @@ while True:
     # move(speed)
     move(50)
     distanceSensor.wait_for_distance_closed_than(30'cm')
-    turnLeft
+    turnLeft()
 
     hub.right_button.wait_until_pressed()
     frontLegs.stop()
