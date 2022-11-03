@@ -34,8 +34,24 @@ def stop()
     frontLegs.stop()
     rearLegs.stop()
 
+
+
+
+
+def turnLeft():
+    motorA.run_for_seconds(3, 100)
+    motorB.run_for_seconds(3, -100)
+    motorE.run_for_seconds(3, 100)
+    motorF.run_for_seconds(3 -100)
+
+
 while True:
     hub.left_button.wait_until_pressed()
+    # move(speed)
     move(50)
+    distanceSensor.wait_for_distance_closed_than(30'cm')
+    turnLeft
+
     hub.right_button.wait_until_pressed()
-    stop()
+    frontLegs.stop()
+    rearLegs.stop()
