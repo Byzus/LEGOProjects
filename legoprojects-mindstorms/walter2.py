@@ -17,31 +17,31 @@ MotorF = Motor('F')
 
 distanceSensor = DistanceSensor('D')
 
-def resetLegs():
+def reset_legs():
     MotorA.run_to_position(0)
     MotorE.run_to_position(0)
     MotorB.run_to_position(0)
     MotorF.run_to_position(0)
-def resetSteering():
+def reset_steering():
     MotorB.run_to_position(0)
     MotorF.run_to_position(0)
 def forward(n):
-    resetSteering()
+    reset_steering()
     legs.start(100)
     hub.light_matrix.show_image('GO_UP')
     hub.light_status.on('green')
 
-def turnLeft():
+def turn_left():
     hub.light_matrix.show_image('GO_LEFT')
     hub.light_status.on('yellow')
     MotorB.run_to_postion(45)
     MotorF.run_to_position(-45)
     wait_for_seconds(3)
-    resetSteering()
+    reset_steering()
 
 while True:
-    resetLegs()
+    reset_legs()
     # forward(speed)
     forward(100)
     distanceSensor.wait_for_distance_closer_than(100, 'cm')
-    turnLeft()
+    turn_left()

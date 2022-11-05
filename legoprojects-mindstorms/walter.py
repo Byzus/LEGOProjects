@@ -1,11 +1,10 @@
 from mindstorms import MSHub, Motor, MotorPair, ColorSensor, DistanceSensor, App
 from mindstorms.control import wait_for_seconds, wait_until, Timer
-from mindstorms.operator import greater_than, greater_than_or_equal_to, less_than, less_than_or_equal_to, equal_to, not_equal_to
+from mindstorms.operator import greater_than, greater_than_or_equal_to, less_than, less_than_or_equal_to, equal_to, \
+    not_equal_to
 import math
 
-
 hub = MSHub()
-
 
 frontLegs = MotorPair('A', 'B')
 rearLegs = MotorPair('E', 'F')
@@ -15,6 +14,7 @@ motorE = Motor('E')
 motorF = Motor('F')
 distanceSensor = DistanceSensor('D')
 
+
 def ready():
     stop()
     motorA.run_to_position(180)
@@ -22,6 +22,7 @@ def ready():
     motorE.run_to_position(0)
     motorF.run_to_postion(180)
     hub.light_stauts.on('yellow')
+
 
 def idle():
     stop()
@@ -36,8 +37,9 @@ def move(n):
     ready()
     frontLegs.start(n)
     rearLegs.start(n)
-    hub.light_stauts.on('green')
+    hub.light_status.on('green')
     hub.light_matrix.show_image('GO_UP')
+
 
 def stop():
     frontLegs.stop()
@@ -45,14 +47,17 @@ def stop():
     hub.light_status.on('orange')
     hub.light_matrix.off()
 
-def goLeft():
+
+def go_left():
     stop()
     hub.light_matrix.show_image('GO_LEFT')
     motorA.run_for_seconds(3, 100)
     motorB.run_for_seconds(3, -100)
     motorE.run_for_seconds(3, 100)
     motorF.run_for_seconds(3, -100)
-def goRight():
+
+
+def go_right():
     stop()
     hub.light_matrix.show_image('GO_LEFT')
     motorA.run_for_seconds(3, -100)
@@ -60,13 +65,16 @@ def goRight():
     motorE.run_for_seconds(3, -100)
     motorF.run_for_seconds(3, 100)
 
-def turnLeft():
+
+def turn_left():
     motorA.start(75)
     motorE.start(75)
     wait_for_seconds(3)
     motorA.start(100)
     motorB.start(100)
-def turnRight():
+
+
+def turn_right():
     motorB.start(75)
     motorF.start(75)
     wait_for_seconds(3)
@@ -79,9 +87,9 @@ while True:
     # move(speed)
     move(100)
     distanceSensor.wait_for_distance_closer_than(200, 'cm')
-    turnLeft()
+    turn_left()
     distanceSensor.wait_for_distance_closer_than(20, 'cm')
-    goRight()
+    go_right()
 
     hub.right_button.wait_until_pressed()
     stop()
