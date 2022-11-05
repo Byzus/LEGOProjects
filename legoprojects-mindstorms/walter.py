@@ -45,21 +45,43 @@ def stop():
     hub.light_status.on('orange')
     hub.light_matrix.off()
 
-def turnLeft():
+def goLeft():
     stop()
     hub.light_matrix.show_image('GO_LEFT')
     motorA.run_for_seconds(3, 100)
     motorB.run_for_seconds(3, -100)
     motorE.run_for_seconds(3, 100)
     motorF.run_for_seconds(3, -100)
+def goRight():
+    stop()
+    hub.light_matrix.show_image('GO_LEFT')
+    motorA.run_for_seconds(3, -100)
+    motorB.run_for_seconds(3, 100)
+    motorE.run_for_seconds(3, -100)
+    motorF.run_for_seconds(3, 100)
+
+def turnLeft():
+    motorA.start(75)
+    motorE.start(75)
+    wait_for_seconds(3)
+    motorA.start(100)
+    motorB.start(100)
+def turnRight():
+    motorB.start(75)
+    motorF.start(75)
+    wait_for_seconds(3)
+    motorB.start(100)
+    motorF.start(100)
 
 
 while True:
     hub.left_button.wait_until_pressed()
     # move(speed)
     move(100)
-    distanceSensor.wait_for_distance_closed_than(30, 'cm')
+    distanceSensor.wait_for_distance_closer_than(200, 'cm')
     turnLeft()
+    distanceSensor.wait_for_distance_closer_than(20, 'cm')
+    goRight()
 
     hub.right_button.wait_until_pressed()
     stop()
