@@ -25,9 +25,9 @@ def resetLegs():
 def resetSteering():
     MotorB.run_to_position(0)
     MotorF.run_to_position(0)
-def forward():
+def forward(n):
     resetSteering()
-    legs.start()
+    legs.start(100)
     hub.light_matrix.show_image('GO_UP')
     hub.light_status.on('green')
 
@@ -41,6 +41,7 @@ def turnLeft():
 
 while True:
     resetLegs()
-    forward()
-    distanceSensor.wait_for_distance_closer_than(30, 'cm')
+    # forward(speed)
+    forward(100)
+    distanceSensor.wait_for_distance_closer_than(100, 'cm')
     turnLeft()

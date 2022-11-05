@@ -27,8 +27,7 @@ def forward_animation():
 
 
 while True:
-    motorPair.set_default_speed(45)
-    vacuum.start()
+    vacuum.start(100)
     motorPair.start()
     hub.status_light.on('blue')
 
@@ -40,5 +39,5 @@ while True:
     motorF.run_for_degrees(-90)
 
     forward_animation()
-    motorPair.start()
+    motorPair.start(100)
     hub.status_light.on('blue')
